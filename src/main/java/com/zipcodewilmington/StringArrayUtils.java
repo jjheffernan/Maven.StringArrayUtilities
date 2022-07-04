@@ -12,7 +12,6 @@ public class StringArrayUtils {
      */ // TODO
     public static String getFirstElement(String[] array) {
 
-
         return array[0];
     }
 
@@ -32,8 +31,8 @@ public class StringArrayUtils {
      */ // TODO
     public static String getLastElement(String[] array) {
 
-
-        return null;
+        int l = array.length-1;
+        return array[l];
     }
 
     /**
@@ -85,13 +84,14 @@ public class StringArrayUtils {
 
         String[] alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
         String arrayString = Arrays.toString(array).toLowerCase();
-        String alphaString = Arrays.toString(alphabet).toLowerCase();
 
-        for (int i = 0; i <= array.length-1; i++) {
-            if (arrayString.contains(alphabet(i)));
+        for (int i = 0; i <= alphabet.length-1; i++) {
+            if (arrayString.contains(alphabet[i])!= true) {
+                return false;
+            }
         }
+        return true;
 
-        return false;
     }
 
     /**
