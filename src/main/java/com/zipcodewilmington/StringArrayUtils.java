@@ -143,9 +143,28 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
+        ArrayList<String> output = new ArrayList<String>(array.length);// need to change this to array to pass test
+        int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            output.add(array[i]);
+            if (array[i] == array[i+1]) {
+                output.remove(i);
+            }
+            /*output.add(i,array[i]);;
+            if (output.size() > 2)
+            {
+                int sz = output.size();
 
-
-        return null;
+                // removing three consecutive duplicates
+                if (output.get(sz-1) == output.get(sz - 2) ||
+                        output.get(sz-2) == output.get(sz -3))
+                {
+                   // output.trimToSize(); // Removing three characters
+                    // from the string
+                }
+            }*/
+        }
+        return output.toArray(array);
     }
 
     /**
