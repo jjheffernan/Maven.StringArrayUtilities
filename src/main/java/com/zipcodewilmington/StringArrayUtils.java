@@ -67,7 +67,7 @@ public class StringArrayUtils {
         List<String> output;
         output = Arrays.asList(array);
         Collections.reverse(output);
-        return output.toArray(new String[0]);
+        return output.toArray(array);
     }
 
     /**
@@ -125,10 +125,14 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        String[] output = new String[array.length];
+        String[] output = new String[array.length-1];
+        int count = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i].contains(valueToRemove)) {
                 output[i] = "";
+                count++;
+            } else {
+                output[i-count] = array[i];
             }
         }
         return output;
