@@ -1,6 +1,9 @@
 package com.zipcodewilmington;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by leon on 1/29/18.
@@ -31,8 +34,7 @@ public class StringArrayUtils {
      */ // TODO
     public static String getLastElement(String[] array) {
 
-        int l = array.length-1;
-        return array[l];
+        return array[array.length-1];
     }
 
     /**
@@ -41,8 +43,7 @@ public class StringArrayUtils {
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
 
-
-        return null;
+        return array[array.length-2];
     }
 
     /**
@@ -52,7 +53,9 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean contains(String[] array, String value) {
 
-
+        for (int i = 0; i < array.length; i++) {
+            if (Arrays.asList(array[i]).contains(value)) {return true;}
+        }
         return false;
     }
 
@@ -61,9 +64,10 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-
-
-        return null;
+        List<String> output;
+        output = Arrays.asList(array);
+        Collections.reverse(output);
+        return output.toArray(new String[0]);
     }
 
     /**
@@ -71,9 +75,15 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-
-
-        return false;
+        boolean outcome = true;
+        for (int i = 0; i <= array.length / 2 && array.length != 0; i++) {
+            // Check if first and last element are different.
+            if (array[i] != array[array.length - i - 1]) {
+                // return change variable
+                outcome = false;
+            }
+        }
+        return outcome;
     }
 
     /**
@@ -100,9 +110,13 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-
-
-        return 0;
+        int occurence = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].contains(value)) {
+                occurence += 1;
+            }
+        }
+        return occurence;
     }
 
     /**
@@ -111,9 +125,13 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-
-
-        return null;
+        String[] output = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].contains(valueToRemove)) {
+                output[i] = "";
+            }
+        }
+        return output;
     }
 
     /**
